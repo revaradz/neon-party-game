@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NEON PARTY — Scribble + Quiz</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div class="glow g1"></div><div class="glow g2"></div>
+<header><div class="brand"><span class="brand-mark">✦</span> NEON<span>PARTY</span></div><div class="tag">DRAW • GUESS • KNOW • WIN</div><div id="connection" class="connection">● CONNECTING</div></header>
+<main>
+<section id="home" class="panel hero">
+  <div class="eyebrow">THE ONLINE PARTY GAME</div><h1>LET'S GET<br><span>GLOWING.</span></h1>
+  <p class="intro">Grab your friends. Draw wild things, guess fast, and flex your trivia brain.</p>
+  <div class="entry-grid">
+    <div class="entry-card"><h2>CREATE A ROOM</h2><label>Your nickname</label><input id="createName" maxlength="18" placeholder="Neon Ninja"><label>Game mode</label><select id="mode"><option value="both">Both — Scribble + Quiz</option><option value="scribble">Scribble only</option><option value="quiz">Quiz only</option></select><button id="createBtn" class="primary">CREATE PARTY <span>↗</span></button></div>
+    <div class="entry-card"><h2>JOIN A ROOM</h2><label>Your nickname</label><input id="joinName" maxlength="18" placeholder="Pixel Wizard"><label>Room code</label><input id="roomCode" maxlength="6" placeholder="ABC123" class="code-input"><button id="joinBtn" class="secondary">JOIN PARTY <span>→</span></button></div>
+  </div>
+  <div class="free-note">✦ FREE TO PLAY • NO ACCOUNTS • UP TO 12 PLAYERS</div>
+</section>
+<section id="lobby" class="panel hidden">
+  <div class="topline"><div><div class="eyebrow">YOUR PARTY IS READY</div><h1 class="small-title">THE <span>LOBBY</span></h1></div><button id="leaveLobby" class="quiet">LEAVE ✕</button></div>
+  <div class="room-banner"><div><small>SHARE THIS ROOM CODE</small><div id="roomCodeDisplay" class="room-code">------</div></div><button id="copyCode" class="secondary small">COPY CODE</button></div>
+  <h3>PLAYERS <span id="playerCount">0/12</span></h3><div id="players" class="players"></div>
+  <p id="lobbyMessage" class="muted">Waiting for your crew…</p><button id="startBtn" class="primary wide" disabled>START GAME — NEED 2 PLAYERS</button>
+  <p class="tiny muted">The host starts the game when everyone has joined.</p>
+</section>
+<section id="game" class="panel hidden">
+  <div class="game-head"><div><div class="eyebrow" id="roundType">ROUND 1</div><h2 id="gameTitle">SCRIBBLE <span>TIME</span></h2></div><div class="timer"><span id="timer">65</span><small>SECONDS</small></div></div>
+  <div class="game-layout">
+    <div class="play-area">
+      <div id="drawTools" class="toolbar hidden"><span id="drawerPrompt">YOUR WORD: ???</span><div class="toolset"><input type="color" id="ink" value="#00f5ff" title="Brush colour"><input type="range" id="brush" min="2" max="16" value="5"><button id="clearBtn" class="tool-btn">CLEAR</button></div></div>
+      <canvas id="board" width="900" height="520"></canvas>
+      <div id="quizArea" class="quiz-area hidden"><div id="question" class="question"></div><div id="answers" class="answers"></div><div id="quizFeedback" class="feedback"></div></div>
+      <div id="spectatorHint" class="hint">Watch the drawing and type your guess below.</div>
+    </div>
+    <aside class="side">
+      <h3>LIVE SCORES</h3><div id="scores" class="scores"></div>
+      <h3>PARTY CHAT</h3><div id="chat" class="chat"></div>
+      <form id="chatForm" class="chat-form"><input id="chatInput" maxlength="100" placeholder="Type your guess…" autocomplete="off"><button>➤</button></form>
+    </aside>
+  </div>
+  <div id="gameMessage" class="game-message">Get ready…</div>
+</section>
+<section id="finished" class="panel hidden">
+  <div class="eyebrow">THAT WAS ELECTRIC</div><h1>GAME <span>OVER.</span></h1><div id="finalScores" class="final-scores"></div><button id="backHome" class="primary">BACK TO HOME</button>
+</section>
+</main>
+<footer>NEON PARTY <span>✦</span> A FREE FRIENDS-ONLY GAME</footer>
+<script src="/socket.io/socket.io.js"></script><script src="/game.js"></script>
+</body></html>
